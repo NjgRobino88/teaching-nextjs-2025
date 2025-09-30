@@ -9,6 +9,8 @@
     "lint": "eslint",
     "db:migrate:make": "kysely migrate:make new_migration",
     "db:migrate:latest": "kysely migrate:latest",
+    "db:seed:make": "kysely seed:make new_seed",
+    "db:seed:run": "kysely seed:run",
     "db:codegen": "kysely-codegen --url db.sqlite --out-file src/lib/db-types.ts"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@faker-js/faker": "^10.0.0",
     "@tailwindcss/postcss": "^4",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",

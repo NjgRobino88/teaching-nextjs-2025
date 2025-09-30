@@ -3,4 +3,34 @@
  * Please do not edit it manually.
  */
 
-export interface DB {}
+import type { ColumnType } from "kysely";
+
+export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
+  ? ColumnType<S, I | undefined, U>
+  : ColumnType<T, T | undefined, T>;
+
+export interface Albums {
+  autor_id: number;
+  id: Generated<number>;
+  name: string;
+  release_date: number;
+}
+
+export interface Autors {
+  bio: string | null;
+  id: Generated<number>;
+  name: string;
+}
+
+export interface Songs {
+  album_id: number;
+  duration: number;
+  id: Generated<number>;
+  name: string;
+}
+
+export interface DB {
+  albums: Albums;
+  autors: Autors;
+  songs: Songs;
+}
